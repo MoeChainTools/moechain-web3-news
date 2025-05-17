@@ -5,21 +5,19 @@ import Parser from 'rss-parser';
 
 export class PANewsSource extends BaseNewsSource {
   name = 'PANews';
-  private adapter = new PANewsAdapter();
+  private url = 'https://rss.panewslab.com/zh/tvsq/rss';
   private parser = new Parser();
+  private adapter = new PANewsAdapter();
 
-  async fetchSourceData(): Promise<any> {
-    const rssUrl = 'https://rss.panewslab.com/zh/tvsq/rss';
-    
-    try {
-      const feed = await this.parser.parseURL(rssUrl);
-      return feed;
-    } catch (error) {
-      console.error('获取PANews RSS数据失败:', error);
-      return null;
+  async fetchSourceData(): Promise<Parser.Output<any>> {
+    const response = await fetch(this.url);
+    if (!response.ok) {
+      throw new Error(`获取PANews数据失败: ${response.statusText}`);
     }
+    const text = await response.text();
+    return this.parser.parseString(text);
   }
-
+  
   adaptSourceData(sourceData: any): NewsItem[] {
     if (!sourceData) {
       return [];
