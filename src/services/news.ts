@@ -1,10 +1,11 @@
 import { BWENewsSource } from '../sources/bwe';
 import { BlockBeatsNewsSource } from '../sources/blockBeats';
+import { PANewsSource } from '../sources/panews';
 import type { NewsSource, NewsFilter, PushService } from '../types';
 import logger from '../utils/logger';
 
 export default abstract class NewsService {
-  protected sources: NewsSource[] = [new BWENewsSource(), new BlockBeatsNewsSource()];
+  protected sources: NewsSource[] = [new BWENewsSource(), new BlockBeatsNewsSource(), new PANewsSource()];
   protected pushService: PushService;
   protected filterService: NewsFilter;
 

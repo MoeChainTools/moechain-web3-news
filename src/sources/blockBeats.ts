@@ -1,7 +1,25 @@
 import type { NewsItem } from '../types';
 import { BaseNewsSource } from './base';
 import { BlockBeatsAdapter } from '../adapters/blockBeats';
-import type { Flash, FlashResponse } from '../types/blockBeats';
+
+interface FlashResponse {
+  status: number;
+  message: string;
+  data: {
+    page: number;
+    data: Flash[];
+  };
+}
+
+interface Flash {
+  id: number;
+  title: string;
+  content: string;
+  pic: string; 
+  link: string;
+  url: string;
+  create_time: string;
+} 
 
 export class BlockBeatsNewsSource extends BaseNewsSource {
   name = 'BlockBeats News';

@@ -4,12 +4,16 @@
 
 ## 功能
 
-- 支持从 方程式新闻(BWE) 获取新闻
-- 支持从 BlockBeats 获取新闻
+- 支持从多种新闻源获取新闻
 - 使用 MoePush (https://moepush.app) 进行新闻推送
 - 可扩展的架构，方便添加更多新闻源
 - 支持部署到 VPS 或 Cloudflare Workers 运行
 - 支持使用Docker容器部署
+
+## 支持的新闻源
+- BlockBeats 快讯
+- PANews 快讯
+- 方程式新闻（BWE）
 
 ## 预览图
 ![terminal](https://pic.otaku.ren/20250510/AgAD2xkAAjOK-FQ.png)
